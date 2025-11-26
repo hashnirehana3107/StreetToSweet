@@ -1,0 +1,451 @@
+/* EventRegistration.css */
+
+.event-registration {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.reg-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.reg-header {
+  background: linear-gradient(135deg, #4ECDC4 0%, #2a9d8f 100%);
+  color: white;
+  padding: 25px 30px;
+  position: relative;
+}
+
+.reg-back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: background 0.3s;
+}
+
+.reg-back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.reg-header h1 {
+  margin: 0 0 25px 0;
+  font-size: 28px;
+}
+
+.reg-progress {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.reg-progress::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.reg-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.reg-progress-step span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.reg-progress-step.active span {
+  background: white;
+  color: #2a9d8f;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.reg-progress-step p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.reg-progress-step.active p {
+  opacity: 1;
+  font-weight: 500;
+}
+
+.reg-content {
+  padding: 30px;
+}
+
+.reg-event-card {
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.reg-event-image {
+  width: 120px;
+  min-height: 120px;
+  background-color: #ddd;
+}
+
+.reg-event-info {
+  padding: 15px 20px;
+  flex: 1;
+  background: #f8f9fa;
+}
+
+.reg-event-info h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.reg-event-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.reg-event-info i {
+  width: 16px;
+  margin-right: 8px;
+  color: #4ECDC4;
+}
+
+.reg-form {
+  background: white;
+}
+
+.reg-form-step h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.reg-step-desc {
+  color: #666;
+  margin: 0 0 25px 0;
+  font-size: 15px;
+}
+
+.reg-input-group {
+  margin-bottom: 20px;
+}
+
+.reg-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+.reg-input-group input,
+.reg-input-group select,
+.reg-input-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border 0.3s;
+  box-sizing: border-box;
+}
+
+.reg-input-group input:focus,
+.reg-input-group select:focus,
+.reg-input-group textarea:focus {
+  outline: none;
+  border-color: #4ECDC4;
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+}
+
+.reg-input-group input.error,
+.reg-input-group textarea.error {
+  border-color: #ff6b6b;
+}
+
+.reg-error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+.reg-checkbox-group {
+  margin-top: 25px;
+}
+
+.reg-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.reg-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.reg-checkbox input:checked ~ .checkmark {
+  background-color: #4ECDC4;
+  border-color: #4ECDC4;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.reg-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.reg-checkbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.reg-step-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.reg-btn-back,
+.reg-btn-next,
+.reg-btn-submit {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.reg-btn-back {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.reg-btn-back:hover {
+  background: #e9ecef;
+}
+
+.reg-btn-next,
+.reg-btn-submit {
+  background: #4ECDC4;
+  color: white;
+}
+
+.reg-btn-next:hover,
+.reg-btn-submit:hover {
+  background: #3bb5ad;
+  transform: translateY(-2px);
+}
+
+.reg-btn-next i,
+.reg-btn-back i,
+.reg-btn-submit i {
+  margin-left: 8px;
+}
+
+.reg-btn-back i {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.reg-review-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.reg-review-card h3 {
+  margin: 0 0 15px 0;
+  color: #444;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.reg-review-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.reg-review-item:last-child {
+  margin-bottom: 0;
+}
+
+.reg-role-badge {
+  background: #4ECDC4;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.reg-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.reg-success-content {
+  text-align: center;
+  max-width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.reg-success-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.reg-success h2 {
+  color: #2a9d8f;
+  margin: 0 0 15px 0;
+}
+
+.reg-success p {
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.reg-success-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.reg-btn-primary,
+.reg-btn-secondary {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.reg-btn-primary {
+  background: #4ECDC4;
+  color: white;
+}
+
+.reg-btn-primary:hover {
+  background: #3bb5ad;
+}
+
+.reg-btn-secondary {
+  background: #f8f9fa;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.reg-btn-secondary:hover {
+  background: #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reg-container {
+    margin: 0 15px;
+  }
+  
+  .reg-header {
+    padding: 20px;
+  }
+  
+  .reg-content {
+    padding: 20px;
+  }
+  
+  .reg-event-card {
+    flex-direction: column;
+  }
+  
+  .reg-event-image {
+    width: 100%;
+    height: 150px;
+  }
+  
+  .reg-progress-step p {
+    display: none;
+  }
+  
+  .reg-step-buttons {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  
+  .reg-btn-back,
+  .reg-btn-next,
+  .reg-btn-submit {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .reg-success-actions {
+    flex-direction: column;
+  }
+}

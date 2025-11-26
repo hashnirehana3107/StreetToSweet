@@ -1,0 +1,190 @@
+.all-sys-dog {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sys-hero {
+  text-align: center;
+  padding: 30px 0;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.sys-hero h1 {
+  color: #0c2865;
+  margin-bottom: 10px;
+}
+
+.sys-hero p {
+  color: #666;
+  font-style: italic;
+}
+
+.sys-search-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.sys-search-filter input {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.sys-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sys-filter-buttons button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sys-filter-buttons button.sys-active {
+  background-color: #0c2865;
+  color: white;
+  border-color: #0c2865;
+}
+
+.sys-ra-dc-section,
+.sys-wl-dc-section,
+.sys-disabled-dc-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sys-ra-dc-section {
+  background-color: #f0fff0;
+}
+
+.sys-wl-dc-section {
+  background-color: #fff8f0;
+}
+
+.sys-disabled-dc-section {
+  background-color: #fff0f0;
+}
+
+.sys-ra-dc-section h2,
+.sys-wl-dc-section h2,
+.sys-disabled-dc-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sys-dc-para {
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #555;
+}
+
+.sys-dog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Modal Styles */
+.sys-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.sys-modal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sys-modal-panel {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.sys-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sys-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.sys-modal-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sys-modal-info h3 {
+  margin-bottom: 15px;
+  color: #0c2865;
+}
+
+.sys-modal-info p {
+  margin-bottom: 10px;
+}
+
+.sys-modal-info span {
+  font-weight: bold;
+}
+
+.sys-id {
+  font-size: 14px;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sys-modal-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sys-filter-buttons {
+    flex-direction: column;
+  }
+  
+  .sys-filter-buttons button {
+    width: 100%;
+  }
+}

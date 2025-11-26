@@ -1,0 +1,231 @@
+const axios = require('axios');
+const baseURL = 'http://localhost:3000';
+
+// Test volunteer dashboard endpoints
+const testVolunteerDashboard = async () => {
+    try {
+        console.log('🧪 Testing Volunteer Dashboard Backend...\n');
+
+        // First, login as volunteer to get token
+        console.log('1. Logging in as volunteer...');
+        const loginResponse = await axios.post(`${baseURL}/auth/login`, {
+            email: 'volunteer@streettosweet.com',
+            password: 'volunteer123'
+        });
+
+        if (loginResponse.data.status !== 'success') {
+            throw new Error('Login failed');
+        }
+
+        const token = loginResponse.data.data.token;
+        console.log('✅ Login successful\n');
+
+        // Set up headers for authenticated requests
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+
+        // Test dashboard overview
+        console.log('2. Testing dashboard overview...');
+        const overviewResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/overview`,
+            { headers }
+        );
+        console.log('✅ Dashboard Overview:', {
+            volunteerName: overviewResponse.data.data.volunteerInfo.name,
+            assignedDogs: overviewResponse.data.data.assignedDogs.length,
+            totalTasks: overviewResponse.data.data.statistics.totalTasks,
+            completedTasks: overviewResponse.data.data.statistics.completedTasks,
+            totalWalks: overviewResponse.data.data.statistics.totalWalks
+        });
+        console.log('');
+
+        // Test getting assigned tasks
+        console.log('3. Testing assigned tasks...');
+        const tasksResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/tasks`,
+            { headers }
+        );
+        console.log('✅ Tasks Retrieved:', {
+            totalTasks: tasksResponse.data.data.totalTasks,
+            dogsWithTasks: tasksResponse.data.data.tasksByDog.length
+        });
+        console.log('');
+
+        // Test getting health reports
+        console.log('4. Testing health reports...');
+        const healthResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/health-reports`,
+            { headers }
+        );
+        console.log('✅ Health Reports Retrieved:', {
+            totalReports: healthResponse.data.data.pagination.total,
+            currentPage: healthResponse.data.data.pagination.current
+        });
+        console.log('');
+
+        // Test getting walking data
+        console.log('5. Testing walking data...');
+        const walkingResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/walks`,
+            { headers }
+        );
+        console.log('✅ Walking Data Retrieved:', {
+            totalWalks: walkingResponse.data.data.statistics.totalWalks,
+            totalDistance: walkingResponse.data.data.statistics.totalDistance + ' km',
+            totalHours: walkingResponse.data.data.statistics.totalHours + ' hrs'
+        });
+        console.log('');
+
+        // Test getting events
+        console.log('6. Testing events...');
+        const eventsResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/events`,
+            { headers }
+        );
+        console.log('✅ Events Retrieved:', {
+            totalEvents: eventsResponse.data.data.pagination.total,
+            upcomingEvents: eventsResponse.data.data.events.filter(e => e.status === 'upcoming').length
+        });
+        console.log('');
+
+        // Test getting blog posts
+        console.log('7. Testing blog posts...');
+        const blogResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/blog-posts`,
+            { headers }
+        );
+        console.log('✅ Blog Posts Retrieved:', {
+            totalPosts: blogResponse.data.data.pagination.total,
+            publishedPosts: blogResponse.data.data.statistics.published || 0,
+            pendingPosts: blogResponse.data.data.statistics.pending || 0
+        });
+        console.log('');
+
+        console.log('🎉 All Volunteer Dashboard endpoints are working correctly!');
+        console.log('\n📊 Summary:');
+        console.log('- Dashboard Overview: ✅');
+        console.log('- Task Management: ✅');
+        console.log('- Health Reporting: ✅');
+        console.log('- Walking Tracker: ✅');
+        console.log('- Events Management: ✅');
+        console.log('- Blog & Stories: ✅');
+
+    } catch (error) {
+        console.error('❌ Test failed:', error.response?.data || error.message);
+        
+        if (error.response?.status === 404) {
+            console.log('\n💡 Make sure the server is running and all routes are properly configured.');
+        }
+        
+        if (error.response?.status === 401) {
+            console.log('\n💡 Authentication failed. Check if the volunteer user exists and credentials are correct.');
+        }
+    }
+};
+
+// Test specific endpoint creation
+const testCreateOperations = async () => {
+    try {
+        console.log('\n🔬 Testing CREATE operations...\n');
+
+        // Login first
+        const loginResponse = await axios.post(`${baseURL}/auth/login`, {
+            email: 'volunteer@streettosweet.com',
+            password: 'volunteer123'
+        });
+
+        const token = loginResponse.data.data.token;
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+
+        // Get a dog ID for testing
+        const tasksResponse = await axios.get(
+            `${baseURL}/volunteer/dashboard/tasks`,
+            { headers }
+        );
+        
+        if (tasksResponse.data.data.tasksByDog.length === 0) {
+            console.log('❌ No dogs found for testing CREATE operations');
+            return;
+        }
+
+        const dogId = tasksResponse.data.data.tasksByDog[0].dog._id;
+
+        // Test creating health report
+        console.log('1. Testing health report creation...');
+        const healthReportData = {
+            dogId: dogId,
+            eatingHabits: 'normal',
+            mood: 'playful',
+            weight: 25.5,
+            observations: 'Dog is healthy and active during test',
+            urgency: 'low'
+        };
+
+        const healthReportResponse = await axios.post(
+            `${baseURL}/volunteer/dashboard/health-reports`,
+            healthReportData,
+            { headers }
+        );
+        console.log('✅ Health Report Created:', healthReportResponse.data.data.healthReport._id);
+
+        // Test creating walk log
+        console.log('2. Testing walk log creation...');
+        const walkData = {
+            dogId: dogId,
+            distance: 2.5,
+            duration: 45,
+            startTime: new Date(Date.now() - 45 * 60000).toISOString(), // 45 minutes ago
+            endTime: new Date().toISOString(),
+            notes: 'Great walk for testing',
+            weather: 'sunny',
+            walkQuality: 'excellent'
+        };
+
+        const walkResponse = await axios.post(
+            `${baseURL}/volunteer/dashboard/walks`,
+            walkData,
+            { headers }
+        );
+        console.log('✅ Walk Log Created:', walkResponse.data.data.walkLog._id);
+
+        // Test creating blog post
+        console.log('3. Testing blog post creation...');
+        const blogData = {
+            title: 'Test Blog Post from API',
+            content: 'This is a test blog post created via API to verify the backend functionality.',
+            summary: 'A test blog post for verification',
+            category: 'volunteer_experience',
+            tags: 'test,api,backend'
+        };
+
+        const blogResponse = await axios.post(
+            `${baseURL}/volunteer/dashboard/blog-posts`,
+            blogData,
+            { headers }
+        );
+        console.log('✅ Blog Post Created:', blogResponse.data.data.blogPost._id);
+
+        console.log('\n🎉 All CREATE operations working correctly!');
+
+    } catch (error) {
+        console.error('❌ Create operations test failed:', error.response?.data || error.message);
+    }
+};
+
+// Run tests
+const runAllTests = async () => {
+    await testVolunteerDashboard();
+    await testCreateOperations();
+};
+
+// Export for use or run directly
+if (require.main === module) {
+    runAllTests();
+}
+
+module.exports = { testVolunteerDashboard, testCreateOperations };

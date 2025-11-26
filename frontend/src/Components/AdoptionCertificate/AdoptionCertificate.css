@@ -1,0 +1,241 @@
+/* AdoptionCertificate.css */
+
+/* Page wrapper */
+.certificate-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f7f7f7 0%, #e0eaff 100%);
+  min-height: 100vh;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Action buttons */
+.certificate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.certificate-actions button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #0c2865, #1a3a8f);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.certificate-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.certificate-actions button:disabled {
+  background: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Preview wrapper */
+.certificate-preview-wrapper {
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.certificate-preview-wrapper:hover {
+  transform: scale(1.02);
+}
+
+/* Certificate container */
+.certificate {
+  width: 100%;
+  padding: 35px;
+  background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative border */
+.cert-border {
+  border: 6px double #0c2865;
+  border-radius: 20px;
+  padding: 25px;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.cert-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  gap: 25px;
+}
+
+.shelter-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #0c2865;
+  padding: 5px;
+  background: #fff;
+}
+
+.cert-title h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #0c2865;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.cert-title p {
+  margin: 5px 0 0 0;
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* Body */
+.cert-body {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cert-left img {
+  max-width: 280px;
+  border-radius: 15px;
+  border: 3px solid #0c2865;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.cert-right {
+  flex: 1;
+  min-width: 250px;
+}
+
+.cert-right h3 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+  color: #0c2865;
+}
+
+.cert-right p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+  background: #f0f4ff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.details-grid div {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Health Information */
+.health-info {
+  margin: 20px 0;
+  padding: 15px;
+  background: #e8f5e8;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.health-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* Certificate dates */
+.cert-dates {
+  margin-top: 25px;
+  padding: 10px;
+  background: #fff8e1;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.cert-dates p {
+  margin: 5px 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Signatures */
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.sign-line {
+  border-top: 2px solid #0c2865;
+  width: 180px;
+  margin-bottom: 5px;
+}
+
+/* Footer */
+.cert-footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Loading and error */
+.cert-loading, .cert-error {
+  font-size: 1.3rem;
+  color: #0c2865;
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cert-body {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cert-left img {
+    max-width: 100%;
+  }
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .signatures {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .health-info, .cert-dates {
+    margin: 15px 0;
+  }
+}
+

@@ -1,0 +1,139 @@
+
+/* Donate Section Background & Animations */
+.donate-options-section {
+  padding: 60px 20px;
+  background-image: radial-gradient(
+    circle 369px at -2.9% 12.9%, 
+    rgba(247,234,163,1) 0%, 
+    rgba(217, 124, 220, 0.56) 46.4%, 
+    rgb(192, 222, 255) 100.7%
+  );
+  color: #383737;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.impact-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: bounceIn 2s infinite alternate;
+}
+
+.impact-heart { color: #7c1a1a; }
+
+/* Layout */
+.donate-options-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left Image */
+.donate-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.donate-image img {
+  width: 470px;
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(153, 29, 16, 0.4);
+}
+.donate-image img:hover { transform: scale(1.05); }
+.donate-image::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #ff9a9e, #fad0c4, #b64f99);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(60px);
+  animation: pulse 6s infinite alternate;
+}
+
+/* Form Wrapper */
+.donate-form-wrapper {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  width: 600px;
+  max-width: 100%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  animation: slideUp 1.5s ease-in-out;
+}
+
+.donate-form-wrapper h3 { font-size: 1.6rem; margin-bottom: 10px; }
+.donate-form-wrapper p { margin-bottom: 20px; opacity: 0.9; }
+
+/* Preset Amounts */
+.preset-amounts { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+.preset-btn {
+  padding: 12px 20px; border: none; border-radius: 12px; cursor: pointer;
+  font-weight: bold; background: linear-gradient(135deg, #006eff, #ff6a00);
+  color: #fff; transition: all 0.3s;
+}
+.preset-btn:hover { transform: scale(1.1); background: linear-gradient(135deg, #0044ff, #ee0979); }
+.preset-btn.active { box-shadow: 0 0 15px #ffd200; }
+.custom-amount {
+  padding: 10px; border-radius: 12px; border: none; text-align: center;
+  font-weight: bold; width: 100px;
+}
+
+/* Frequency */
+.frequency-options { display: flex; justify-content: space-around; margin: 20px 0; }
+.frequency-label { cursor: pointer; }
+
+/* Payment Methods */
+.payment-methods { margin: 20px 0; text-align: left; }
+.payment-methods label { font-weight: 500; margin-bottom: 5px; font-size: 0.9rem; color: #333; display: block; }
+.payment-methods select,
+.payment-methods input {
+  width: 100%; padding: 8px 10px; font-size: 0.9rem; border: 1px solid #ccc;
+  border-radius: 6px; outline: none; margin-bottom: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.payment-methods select:focus,
+.payment-methods input:focus { border-color: #0077ff; box-shadow: 0 0 5px rgba(0, 119, 255, 0.3); }
+.payment-input { margin-top: 10px; margin-bottom: 15px; }
+.payment-input input { display: block; }
+
+/* Side-by-side card number & CVV */
+.credit-card-row { display: flex; gap: 10px; }
+.credit-card-row input { flex: 1; }
+
+/* Submit Button */
+.donate-cta {
+  width: 100%; padding: 14px; border: none; border-radius: 12px;
+  font-size: 1.2rem; font-weight: bold; cursor: pointer;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: white; transition: transform 0.3s, box-shadow 0.3s;
+}
+.donate-cta:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+
+/* Animations */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px);} }
+@keyframes pulse { 0%{scale:1;opacity:0.7} 100%{scale:1.2;opacity:1} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0);} }
+@keyframes slideUp { from{opacity:0;transform:translateY(60px)} to{opacity:1;transform:translateY(0);} }
+@keyframes bounceIn { from{transform:scale(1)} to{transform:scale(1.1)} }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .donate-options-container { flex-direction: column; }
+  .credit-card-row { flex-direction: column; }
+  .preset-amounts { flex-direction: column; }
+}

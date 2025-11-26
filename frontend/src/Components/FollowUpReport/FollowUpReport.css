@@ -1,0 +1,148 @@
+/* ===== Follow-Up Container ===== */
+.followup-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-image: linear-gradient( 111.5deg,  rgb(223, 231, 250) 0.3%, rgb(149, 203, 245) 99.1% );
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #0c2865;
+}
+
+.followup-container h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Loading & Info Text */
+.followup-container p {
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ===== Follow-Up Form ===== */
+.followup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.followup-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #0c2865;
+}
+
+.followup-form select,
+.followup-form textarea,
+.followup-form input[type="file"] {
+  margin-top: 5px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.followup-form select:focus,
+.followup-form textarea:focus,
+.followup-form input[type="file"]:focus {
+  border-color: #0c2865;
+  box-shadow: 0 0 5px rgba(12, 40, 101, 0.2);
+}
+
+/* ===== Fieldset for Behavior Checklist ===== */
+.followup-form fieldset {
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.followup-form fieldset legend {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0c2865;
+}
+
+.followup-form fieldset label {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+/* ===== Submit Button ===== */
+.submit-btn {
+  align-self: center;
+  margin-top: 10px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #0c2865;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #0e3a8c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(12, 40, 101, 0.3);
+}
+
+/* ===== Error / No Adoption Request ===== */
+.followup-error {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px 25px;
+  background: #fff0f0;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.followup-error p {
+  color: #c53030;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.followup-error button {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: none;
+  background: #0c2865;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.followup-error button:hover {
+  background: #0e3a8c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(12, 40, 101, 0.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .followup-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}

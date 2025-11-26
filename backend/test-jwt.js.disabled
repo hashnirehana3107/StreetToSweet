@@ -1,0 +1,195 @@
+const axios = require('axios');
+
+const BASE_URL = 'http://localhost:3000';
+
+// Test data
+const testUsers = [
+    {
+        name: 'Admin User',
+        email: 'admin@streettosweet.com',
+        password: 'admin123',
+        role: 'admin'
+    },
+    {
+        name: 'Driver User',
+        email: 'driver@streettosweet.com',
+        password: 'driver123',
+        role: 'driver',
+        licenseNumber: 'DL123456',
+        availability: ['Monday', 'Wednesday', 'Friday']
+    },
+    {
+        name: 'Vet User',
+        email: 'vet@streettosweet.com',
+        password: 'vet123',
+        role: 'vet',
+        specialization: 'Small Animals',
+        experience: '5 years',
+        availability: ['Tuesday', 'Thursday', 'Saturday']
+    },
+    {
+        name: 'Volunteer User',
+        email: 'volunteer@streettosweet.com',
+        password: 'volunteer123',
+        role: 'volunteer',
+        experience: '2 years',
+        availability: ['Weekends']
+    },
+    {
+        name: 'Regular User',
+        email: 'user@streettosweet.com',
+        password: 'user123',
+        role: 'user',
+        phone: '1234567890'
+    }
+];
+
+// Test registration
+async function testRegistration() {
+    console.log('\n=== Testing User Registration ===');
+    
+    for (const user of testUsers) {
+        try {
+            const response = await axios.post(`${BASE_URL}/auth/register`, user);
+            console.log(`✅ Successfully registered: ${user.name} (${user.role})`);
+            console.log(`   Redirect URL: ${response.data.data.redirectTo}`);
+        } catch (error) {
+            if (error.response?.status === 400 && error.response?.data?.error === 'User already exists') {
+                console.log(`ℹ️  User already exists: ${user.name} (${user.role})`);
+            } else {
+                console.log(`❌ Failed to register ${user.name}:`, error.response?.data?.message || error.message);
+            }
+        }
+    }
+}
+
+// Test login and dashboard access
+async function testLoginAndDashboards() {
+    console.log('\n=== Testing Login and Dashboard Access ===');
+    
+    for (const user of testUsers) {
+        try {
+            // Login
+            const loginResponse = await axios.post(`${BASE_URL}/auth/login`, {
+                email: user.email,
+                password: user.password
+            });
+            
+            const token = loginResponse.data.data.token;
+            const redirectTo = loginResponse.data.data.redirectTo;
+            
+            console.log(`✅ Successfully logged in: ${user.name} (${user.role})`);
+            console.log(`   Redirect URL: ${redirectTo}`);
+            
+            // Test dashboard access based on role
+            const dashboardEndpoints = {
+                admin: '/admin/dashboard',
+                driver: '/driver/dashboard',
+                vet: '/vet/dashboard',
+                volunteer: '/volunteer-dashboard/dashboard',
+                user: '/auth/profile'
+            };
+            
+            const dashboardUrl = dashboardEndpoints[user.role];
+            if (dashboardUrl) {
+                try {
+                    const dashboardResponse = await axios.get(`${BASE_URL}${dashboardUrl}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    console.log(`✅ Successfully accessed ${user.role} dashboard`);
+                } catch (dashboardError) {
+                    console.log(`❌ Failed to access ${user.role} dashboard:`, dashboardError.response?.data?.message || dashboardError.message);
+                }
+            }
+            
+        } catch (error) {
+            console.log(`❌ Failed to login ${user.name}:`, error.response?.data?.message || error.message);
+        }
+        
+        console.log(''); // Add spacing
+    }
+}
+
+// Test role-based access control
+async function testRoleBasedAccess() {
+    console.log('\n=== Testing Role-Based Access Control ===');
+    
+    // Login as regular user
+    const userLogin = await axios.post(`${BASE_URL}/auth/login`, {
+        email: 'user@streettosweet.com',
+        password: 'user123'
+    });
+    
+    const userToken = userLogin.data.data.token;
+    
+    // Try to access admin dashboard (should fail)
+    try {
+        await axios.get(`${BASE_URL}/admin/dashboard`, {
+            headers: { 'Authorization': `Bearer ${userToken}` }
+        });
+        console.log('❌ User should not have access to admin dashboard!');
+    } catch (error) {
+        if (error.response?.status === 403) {
+            console.log('✅ Correctly blocked user from accessing admin dashboard');
+        } else {
+            console.log('❌ Unexpected error:', error.response?.data?.message);
+        }
+    }
+    
+    // Login as admin
+    const adminLogin = await axios.post(`${BASE_URL}/auth/login`, {
+        email: 'admin@streettosweet.com',
+        password: 'admin123'
+    });
+    
+    const adminToken = adminLogin.data.data.token;
+    
+    // Try to access admin dashboard (should succeed)
+    try {
+        const response = await axios.get(`${BASE_URL}/admin/dashboard`, {
+            headers: { 'Authorization': `Bearer ${adminToken}` }
+        });
+        console.log('✅ Admin successfully accessed admin dashboard');
+    } catch (error) {
+        console.log('❌ Admin should have access to admin dashboard:', error.response?.data?.message);
+    }
+}
+
+// Test invalid token
+async function testInvalidToken() {
+    console.log('\n=== Testing Invalid Token ===');
+    
+    try {
+        await axios.get(`${BASE_URL}/auth/profile`, {
+            headers: { 'Authorization': 'Bearer invalid-token' }
+        });
+        console.log('❌ Invalid token should be rejected!');
+    } catch (error) {
+        if (error.response?.status === 403) {
+            console.log('✅ Correctly rejected invalid token');
+        } else {
+            console.log('❌ Unexpected error:', error.response?.data?.message);
+        }
+    }
+}
+
+// Run all tests
+async function runTests() {
+    console.log('🚀 Starting JWT Authentication System Tests...\n');
+    
+    try {
+        await testRegistration();
+        await testLoginAndDashboards();
+        await testRoleBasedAccess();
+        await testInvalidToken();
+        
+        console.log('\n🎉 All tests completed!');
+    } catch (error) {
+        console.error('Test suite failed:', error.message);
+    }
+}
+
+// Run tests
+runTests();

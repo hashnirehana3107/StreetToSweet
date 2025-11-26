@@ -1,0 +1,197 @@
+/* ReportStray.css */
+.re-st-report-stray {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748;
+}
+
+.re-st-report-stray h2 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 2.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.re-st-report-stray h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4299e1, #48bb78);
+  border-radius: 2px;
+}
+
+.re-st-report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.re-st-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.re-st-form-group label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.re-st-form-group label::after {
+  content: '*';
+  color: #e53e3e;
+  display: inline;
+  margin-left: 2px;
+}
+
+.re-st-form-group input:not([type="file"]),
+.re-st-form-group select,
+.re-st-form-group textarea {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #2d3748;
+}
+
+.re-st-form-group input:not([type="file"]):focus,
+.re-st-form-group select:focus,
+.re-st-form-group textarea:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  transform: translateY(-1px);
+}
+
+.re-st-form-group input::placeholder,
+.re-st-form-group textarea::placeholder {
+  color: #a0aec0;
+}
+
+.re-st-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.re-st-form-group input[type="file"] {
+  padding: 0.5rem;
+  border: 2px dashed #e1e8ed;
+  background: #f8f9fa;
+}
+
+.re-st-form-group input[type="file"]:hover {
+  border-color: #3498db;
+  background: #f1f8ff;
+}
+
+.re-st-form-group small {
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.re-st-submit-btn {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.re-st-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2980b9, #1c6ea4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.re-st-submit-btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .re-st-report-stray {
+    padding: 1rem;
+  }
+  
+  .re-st-report-form {
+    padding: 1.5rem;
+  }
+  
+  .re-st-report-stray h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .re-st-report-form {
+    padding: 1rem;
+  }
+  
+  .re-st-report-stray h2 {
+    font-size: 1.5rem;
+  }
+  
+  .re-st-submit-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Animation for form elements */
+.re-st-form-group {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for form groups */
+.re-st-form-group:nth-child(1) { animation-delay: 0.1s; }
+.re-st-form-group:nth-child(2) { animation-delay: 0.2s; }
+.re-st-form-group:nth-child(3) { animation-delay: 0.3s; }
+.re-st-form-group:nth-child(4) { animation-delay: 0.4s; }
+.re-st-form-group:nth-child(5) { animation-delay: 0.5s; }
+.re-st-form-group:nth-child(6) { animation-delay: 0.6s; }
+.re-st-form-group:nth-child(7) { animation-delay: 0.7s; }
+.re-st-form-group:nth-child(8) { animation-delay: 0.8s; }
+.re-st-form-group:nth-child(9) { animation-delay: 0.9s; }

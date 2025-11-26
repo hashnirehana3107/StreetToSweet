@@ -1,0 +1,400 @@
+/* ====== Blog Page ====== */
+.blog-page {
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  background: #f9fbfd;
+  color: #333;
+}
+
+/* ====== Header ====== */
+.blog-header {
+  background: linear-gradient(135deg, #4a90e2, #6dcdb1);
+  color: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.blog-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.blog-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ====== Search & Filter ====== */
+.search-filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  padding: 8px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  max-width: 350px;
+}
+
+.search-box i {
+  color: #4a90e2;
+  margin-right: 10px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+/* Category filter */
+.category-filter {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  padding: 8px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.category-filter label {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.category-filter select {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ====== Actions ====== */
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 5px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.write-blog-btn {
+  background: linear-gradient(135deg, #ff6f61, #ff9a76);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 111, 97, 0.3);
+}
+
+.write-blog-btn:hover {
+  transform: scale(1.05);
+}
+
+.blog-count {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ====== Blog Grid ====== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Blog card */
+.blog-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Blog image */
+.blog-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-image img {
+  transform: scale(1.05);
+}
+
+.blog-category {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(74, 144, 226, 0.9);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* Blog content */
+.blog-content {
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.blog-snippet {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+/* Meta info */
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.blog-meta i {
+  margin-right: 5px;
+  color: #4a90e2;
+}
+
+.author-info, .date-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Read more link */
+.read-more {
+  font-size: 0.9rem;
+  color: #4a90e2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  color: #2c6bc7;
+}
+
+/* ====== Loading & Error States ====== */
+.loading-container {
+  text-align: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a90e2;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 15px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-blogs {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.no-blogs i {
+  font-size: 2rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .search-filter-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .blog-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .write-blog-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* ====== Modal Styling ====== */
+.blog-news-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.blog-news-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 90%;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: fadeInUp 0.3s ease;
+}
+
+.blog-news-modal-content h2 {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.b-n-modal-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 10px 0 15px;
+}
+
+.b-n-modal-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.b-n-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.b-n-close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+  z-index: 1001;
+}
+
+.b-n-close-modal:hover {
+  color: #ff4b4b;
+}
+
+.b-n-close-modal:hover {
+  color: #ff4b4b;
+}
+.blog-news-modal-content {
+  position: relative; /* important so close button positions inside */
+}
+
+.b-n-close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #7c2121;
+  z-index: 10;
+}
+
+.b-n-modal-content-text {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Close button */
+.b-n-close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #c0049a;
+  transition: color 0.2s ease;
+}
+
+.b-n-close-modal:hover {
+  color: #ff4b4b;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

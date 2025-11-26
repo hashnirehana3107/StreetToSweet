@@ -1,0 +1,184 @@
+# JWT Authentication System Test - PowerShell Version
+
+Write-Host "🚀 Testing JWT Authentication System..." -ForegroundColor Green
+Write-Host ""
+
+# Test data
+$baseUrl = "http://localhost:3000"
+
+# Function to make HTTP requests
+function Invoke-ApiCall {
+    param(
+        [string]$Method,
+        [string]$Url,
+        [hashtable]$Body = $null,
+        [string]$Token = $null
+    )
+    
+    $headers = @{
+        'Content-Type' = 'application/json'
+    }
+    
+    if ($Token) {
+        $headers['Authorization'] = "Bearer $Token"
+    }
+    
+    try {
+        if ($Body) {
+            $jsonBody = $Body | ConvertTo-Json -Depth 10
+            $response = Invoke-RestMethod -Uri $Url -Method $Method -Headers $headers -Body $jsonBody
+        } else {
+            $response = Invoke-RestMethod -Uri $Url -Method $Method -Headers $headers
+        }
+        return $response
+    } catch {
+        Write-Host "❌ Error: $($_.Exception.Message)" -ForegroundColor Red
+        if ($_.Exception.Response) {
+            $errorDetails = $_.ErrorDetails.Message | ConvertFrom-Json
+            Write-Host "   Details: $($errorDetails.message)" -ForegroundColor Red
+        }
+        return $null
+    }
+}
+
+# Test Users
+$testUsers = @(
+    @{
+        name = "Admin User"
+        email = "admin@streettosweet.com"
+        password = "admin123"
+        role = "admin"
+    },
+    @{
+        name = "Driver User"
+        email = "driver@streettosweet.com"
+        password = "driver123"
+        role = "driver"
+        licenseNumber = "DL123456"
+        availability = @("Monday", "Wednesday", "Friday")
+    },
+    @{
+        name = "Vet User"
+        email = "vet@streettosweet.com"
+        password = "vet123"
+        role = "vet"
+        specialization = "Small Animals"
+        experience = "5 years"
+        availability = @("Tuesday", "Thursday", "Saturday")
+    },
+    @{
+        name = "Volunteer User"
+        email = "volunteer@streettosweet.com"
+        password = "volunteer123"
+        role = "volunteer"
+        experience = "2 years"
+        availability = @("Weekends")
+    },
+    @{
+        name = "Regular User"
+        email = "user@streettosweet.com"
+        password = "user123"
+        role = "user"
+        phone = "1234567890"
+    }
+)
+
+# Test Registration
+Write-Host "=== Testing User Registration ===" -ForegroundColor Yellow
+foreach ($user in $testUsers) {
+    Write-Host "Registering: $($user.name) ($($user.role))" -ForegroundColor Cyan
+    $response = Invoke-ApiCall -Method "POST" -Url "$baseUrl/auth/register" -Body $user
+    
+    if ($response) {
+        Write-Host "✅ Successfully registered: $($user.name)" -ForegroundColor Green
+        Write-Host "   Redirect URL: $($response.data.redirectTo)" -ForegroundColor Gray
+    }
+    Write-Host ""
+}
+
+# Test Login and Dashboard Access
+Write-Host "=== Testing Login and Dashboard Access ===" -ForegroundColor Yellow
+
+$tokens = @{}
+$dashboardEndpoints = @{
+    "admin" = "/admin/dashboard"
+    "driver" = "/driver/dashboard"
+    "vet" = "/vet/dashboard"
+    "volunteer" = "/volunteer/dashboard"
+    "user" = "/auth/profile"
+}
+
+foreach ($user in $testUsers) {
+    Write-Host "Logging in: $($user.name) ($($user.role))" -ForegroundColor Cyan
+    
+    $loginData = @{
+        email = $user.email
+        password = $user.password
+    }
+    
+    $response = Invoke-ApiCall -Method "POST" -Url "$baseUrl/auth/login" -Body $loginData
+    
+    if ($response) {
+        Write-Host "✅ Successfully logged in: $($user.name)" -ForegroundColor Green
+        Write-Host "   Redirect URL: $($response.data.redirectTo)" -ForegroundColor Gray
+        
+        $token = $response.data.token
+        $tokens[$user.role] = $token
+        
+        # Test dashboard access
+        $dashboardUrl = $dashboardEndpoints[$user.role]
+        if ($dashboardUrl) {
+            Write-Host "   Testing dashboard access..." -ForegroundColor Gray
+            $dashboardResponse = Invoke-ApiCall -Method "GET" -Url "$baseUrl$dashboardUrl" -Token $token
+            
+            if ($dashboardResponse) {
+                Write-Host "   ✅ Successfully accessed $($user.role) dashboard" -ForegroundColor Green
+            }
+        }
+    }
+    Write-Host ""
+}
+
+# Test Role-Based Access Control
+Write-Host "=== Testing Role-Based Access Control ===" -ForegroundColor Yellow
+
+if ($tokens["user"] -and $tokens["admin"]) {
+    Write-Host "Testing user trying to access admin dashboard (should fail)..." -ForegroundColor Cyan
+    $response = Invoke-ApiCall -Method "GET" -Url "$baseUrl/admin/dashboard" -Token $tokens["user"]
+    
+    if (-not $response) {
+        Write-Host "✅ Correctly blocked user from accessing admin dashboard" -ForegroundColor Green
+    } else {
+        Write-Host "❌ User should not have access to admin dashboard!" -ForegroundColor Red
+    }
+    Write-Host ""
+    
+    Write-Host "Testing admin accessing admin dashboard (should succeed)..." -ForegroundColor Cyan
+    $response = Invoke-ApiCall -Method "GET" -Url "$baseUrl/admin/dashboard" -Token $tokens["admin"]
+    
+    if ($response) {
+        Write-Host "✅ Admin successfully accessed admin dashboard" -ForegroundColor Green
+    } else {
+        Write-Host "❌ Admin should have access to admin dashboard!" -ForegroundColor Red
+    }
+    Write-Host ""
+}
+
+# Test Invalid Token
+Write-Host "=== Testing Invalid Token ===" -ForegroundColor Yellow
+Write-Host "Testing with invalid token (should fail)..." -ForegroundColor Cyan
+$response = Invoke-ApiCall -Method "GET" -Url "$baseUrl/auth/profile" -Token "invalid-token"
+
+if (-not $response) {
+    Write-Host "✅ Correctly rejected invalid token" -ForegroundColor Green
+} else {
+    Write-Host "❌ Invalid token should be rejected!" -ForegroundColor Red
+}
+
+Write-Host ""
+Write-Host "🎉 JWT Authentication System Tests Completed!" -ForegroundColor Green
+Write-Host ""
+Write-Host "Available Tokens for Manual Testing:" -ForegroundColor Yellow
+foreach ($role in $tokens.Keys) {
+    Write-Host "$role Token: $($tokens[$role])" -ForegroundColor Gray
+}

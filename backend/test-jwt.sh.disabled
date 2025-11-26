@@ -1,0 +1,153 @@
+# JWT Authentication System Test Commands
+
+# 1. Test User Registration
+echo "Testing User Registration..."
+
+# Register Admin User
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Admin User",
+    "email": "admin@streettosweet.com", 
+    "password": "admin123",
+    "role": "admin"
+  }'
+
+echo -e "\n"
+
+# Register Driver
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Driver User",
+    "email": "driver@streettosweet.com",
+    "password": "driver123", 
+    "role": "driver",
+    "licenseNumber": "DL123456",
+    "availability": ["Monday", "Wednesday", "Friday"]
+  }'
+
+echo -e "\n"
+
+# Register Vet
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Vet User",
+    "email": "vet@streettosweet.com",
+    "password": "vet123",
+    "role": "vet", 
+    "specialization": "Small Animals",
+    "experience": "5 years",
+    "availability": ["Tuesday", "Thursday", "Saturday"]
+  }'
+
+echo -e "\n"
+
+# Register Volunteer
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Volunteer User",
+    "email": "volunteer@streettosweet.com",
+    "password": "volunteer123",
+    "role": "volunteer",
+    "experience": "2 years", 
+    "availability": ["Weekends"]
+  }'
+
+echo -e "\n"
+
+# Register Regular User
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Regular User",
+    "email": "user@streettosweet.com",
+    "password": "user123",
+    "role": "user",
+    "phone": "1234567890"
+  }'
+
+echo -e "\n\n"
+
+# 2. Test Login and get tokens
+echo "Testing Login..."
+
+# Login as Admin
+echo "Admin Login:"
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "admin@streettosweet.com",
+    "password": "admin123"
+  }'
+
+echo -e "\n\n"
+
+# Login as Driver  
+echo "Driver Login:"
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "driver@streettosweet.com", 
+    "password": "driver123"
+  }'
+
+echo -e "\n\n"
+
+# Login as Vet
+echo "Vet Login:"
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "vet@streettosweet.com",
+    "password": "vet123" 
+  }'
+
+echo -e "\n\n"
+
+# Login as Volunteer
+echo "Volunteer Login:"
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "volunteer@streettosweet.com",
+    "password": "volunteer123"
+  }'
+
+echo -e "\n\n"
+
+# Login as User
+echo "User Login:"
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@streettosweet.com",
+    "password": "user123"
+  }'
+
+echo -e "\n\n"
+
+echo "Please copy the JWT tokens from the login responses above and test the dashboard endpoints manually:"
+echo ""
+echo "3. Test Dashboard Access (replace TOKEN with actual JWT token):"
+echo ""
+echo "# Admin Dashboard:"
+echo 'curl -X GET http://localhost:3000/admin/dashboard -H "Authorization: Bearer TOKEN"'
+echo ""
+echo "# Driver Dashboard:" 
+echo 'curl -X GET http://localhost:3000/driver/dashboard -H "Authorization: Bearer TOKEN"'
+echo ""
+echo "# Vet Dashboard:"
+echo 'curl -X GET http://localhost:3000/vet/dashboard -H "Authorization: Bearer TOKEN"'
+echo ""
+echo "# Volunteer Dashboard:"
+echo 'curl -X GET http://localhost:3000/volunteer-dashboard/dashboard -H "Authorization: Bearer TOKEN"'
+echo ""
+echo "# User Profile:"
+echo 'curl -X GET http://localhost:3000/auth/profile -H "Authorization: Bearer TOKEN"'
+echo ""
+echo "4. Test Role-Based Access Control:"
+echo "Try accessing admin dashboard with a user token (should fail with 403):"
+echo 'curl -X GET http://localhost:3000/admin/dashboard -H "Authorization: Bearer USER_TOKEN"'

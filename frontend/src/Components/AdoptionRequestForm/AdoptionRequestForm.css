@@ -1,0 +1,283 @@
+/* AdoptionRequestForm.css */
+.adoption-form-page{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #fffdf7 0%, #fff9f2 100%);
+  color: #864444;
+  min-height:100vh;
+}
+
+/* Hero */
+.form-hero{
+  text-align:center;
+  padding:40px 20px 20px;
+  background: linear-gradient(90deg, #f0fef5, #e8fff0);
+}
+.form-hero h1{ font-size:2.4rem; margin-bottom:6px }
+.form-hero p{ color:#555; font-size:1rem; color: #7a7a7a;}
+
+
+/* Container */
+.form-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dog-preview {
+  flex: 1;
+  background-image: linear-gradient( 90deg,  rgba(218,255,234,1) 5.3%, rgba(232,255,231,1) 11.6%, rgba(240,255,233,1) 17.4%, rgba(243,255,226,1) 22.9%, rgba(253,255,228,1) 28.5%, rgba(255,248,225,1) 33.9%, rgba(255,241,229,1) 39.4%, rgba(255,228,222,1) 44.8%, rgba(255,231,231,1) 50.3%, rgba(255,231,243,1) 56.9%, rgba(255,229,255,1) 63.2%, rgba(245,228,255,1) 69.1%, rgba(236,228,255,1) 74.7%, rgba(231,238,255,1) 80.4%, rgba(229,249,255,1) 85.8%, rgba(231,255,250,1) 90.6%, rgba(229,255,243,1) 94.4%, rgba(220,255,228,1) 98.3% );
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 20px;
+}
+
+.dog-preview img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 250px;
+  
+}
+
+.dog-preview h3 {
+  margin-top: 15px;
+  font-size: 1.8rem;
+  color: #a83a07;
+  font-size: 2rem;
+}
+
+.dog-preview .dog-id {
+  font-size: 0.9rem;
+  color: #656161;
+}
+
+.adopt-status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.available {
+  background: #c6eac6;
+  color: #208c20;
+  font-size: 1rem;
+
+}
+
+
+.t-message {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(202,248,255,1) 0%, rgba(186,204,227,1) 51.2%, rgba(117,144,179,1) 100.1% );
+  color: #2b2b2b;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transform-origin: center;
+  transition: transform 220ms ease;
+}
+
+.t-para {
+  max-width: 720px;
+  margin: 0 auto 14px auto;
+  padding-left: 28px;           /* space for bullet */
+  position: relative;
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: left;             /* align left for bullet style */
+}
+
+/* Custom bullet */
+.t-para::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #19307e;               /* theme color */
+}
+
+
+
+
+
+/* gentle "breathing" for emphasis, respects reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .t-message{
+    animation: message 4s ease-in-out infinite;
+  }
+  @keyframes message {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%    { transform: translateY(-3px) scale(1.01); }
+  }
+}
+
+.treatment-badge {
+  background: #ffe3e3;
+  color: #2f6ed3;
+}
+
+.adoption-form {
+  flex: 1.5;
+  background-image: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1% );
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+.adoption-form h2 {
+  margin-bottom: 20px;
+  color: #944007;
+  font-size: 2rem;
+}
+
+.adoption-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #444444;
+}
+
+.adoption-form input,
+.adoption-form textarea,
+.adoption-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #fc700c;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s ease-in-out;
+}
+
+.adoption-form input:focus,
+.adoption-form textarea:focus,
+.adoption-form select:focus {
+  border-color: #ff7316;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;     /* align text to top if it wraps */
+  gap: 30px;                   /* spacing between checkbox and text */
+  margin: 18px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Style the checkbox itself */
+.checkbox-field input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;             /* aligns visually with first line of text */
+  accent-color: #19307e;       /* theme color for modern browsers */
+  cursor: pointer;
+}
+
+/* Emphasize the key words */
+.checkbox-field {
+  font-weight: 400;
+}
+.checkbox-field strong {
+  color: #19307e;
+}
+
+/* Optional: add subtle hover effect */
+.checkbox-field:hover {
+  color: #000;
+  transition: color 0.2s ease;
+}
+
+
+
+.adopt-request-btn.primary {
+  display: block;
+  width: 100%;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(216, 72, 96) 0%, rgb(243, 146, 98) 90% );
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.adopt-request-btn.primary:hover {
+  background-image: linear-gradient( 111.4deg,  rgba(238,113,113,1) 1%, rgba(246,215,148,1) 58% );
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .form-container {
+    flex-direction: column;
+  }
+}
+
+/* Thank you message section */
+.submission-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+}
+
+.success-message {
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.success-message h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.success-message p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.success-message button {
+  margin-top: 25px;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(216, 72, 96) 0%, rgb(243, 146, 98) 90%);
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-message button:hover {
+  background-image: linear-gradient(111.4deg, rgba(238, 113, 113, 1) 1%, rgba(246, 215, 148, 1) 58%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

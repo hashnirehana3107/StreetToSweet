@@ -1,0 +1,243 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+/* Container with background */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* Left side - Welcome */
+.welcome-box {
+  flex: 1;
+  padding: 50px;
+  background-image: linear-gradient( 64.3deg,  rgba(122, 181, 254, 0.484) 17.7%, rgba(134, 196, 255, 0.884) 64.7%, rgba(163, 188, 253, 0.64) 112.1% );
+  border-radius: 20px 0 0 20px;
+  color: #fcfcfb;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-box h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #fafdff;
+}
+
+.welcome-box p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #eafafe;
+  margin-bottom: 40px;
+}
+
+/* Right side - Login */
+.login-box {
+  flex: 1;
+  background-image: linear-gradient( 112.5deg,  rgba(62, 146, 236, 0.26) 1.5%, rgba(108, 165, 235, 0.277) 17.9%, rgba(163, 198, 241, 0.447) 57.8%, rgba(217, 241, 254, 0.544) 89.9% );
+  padding: 40px;
+  border-radius: 0 20px 20px 0;
+  backdrop-filter: blur(8px);
+  color: #233ba6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.login-box h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #0b22cc;
+  margin: 8px auto 0 auto;
+}
+
+/* Input fields */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #011ad7;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  color: #1061bd;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Password toggle */
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Submit Button */
+.submit-btn {
+  display: block; /* ensures margin auto works */
+  width: 100%;
+  padding: 12px;
+  background-image: radial-gradient(
+    circle 981px at 14.6% 17.7%, 
+    rgba(255,101,91,0.85) 2.7%, 
+    rgba(121,32,82,0.78) 97.2%
+  );
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px auto; /* centers the button */
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  opacity: 0.85;
+}
+
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+/* Forgot Password */
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #1b91df;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up link */
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link p {
+  color: #054a9e;
+}
+
+.signup-link a {
+  color: #1b3b9a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  color: #002072;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #0749f0;
+  background: #ede4f5ec;
+  width: 45px;
+  height: 45px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  font-size: 18px;
+}
+
+.social-icons a:hover {
+  background: #104458;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .welcome-box, .login-box {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+}
+.emergency-btn {
+  display: block;          /* makes margin auto work */
+  width: 60%;              /* adjust width as needed */
+  max-width: 250px;        /* optional: limit max size */
+  padding: 10px 20px;
+  margin: 15px auto;       /* centers horizontally with top margin */
+  background-color: #f4f6fb;
+  color: rgb(133, 8, 8);
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-align: center;
+  border: 3px solid #bf025d;
+}
+
+.emergency-btn:hover {
+  background-color: #3a63d0; /* hover effect */
+}
+
+
+.emergency-btn:hover {
+  background-color: #ffa6a5;
+}

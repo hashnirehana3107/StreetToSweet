@@ -1,0 +1,125 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient( 66.5deg,  rgb(165, 234, 176) -11.3%, rgb(12, 157, 193) 100.1% );
+  padding: 10px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: auto;
+  top: 0;
+  z-index: 100;
+  border-bottom: 4px solid #0e3681;
+
+}
+
+/* Left side: logo + system name */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.system-name {
+  font-size: medium;
+  color: #012d27;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Right side menu */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  color: #000;
+}
+
+.navbar-right li a {
+  text-decoration: none;
+  color: #0d0638;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-right .btn-log,.navbar-right  .btn-reg{
+  text-decoration: none;
+  color: #ebeaf7;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+
+.navbar-right li a:hover {
+  background-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn-reg, .btn-log {
+  background-image: linear-gradient( 90.2deg,  rgba(15, 76, 141, 0.999) -0.4%, rgb(40, 105, 162) 106.1% );
+  color: #507cff;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-reg:hover {
+  background-image: linear-gradient( 109.6deg,  rgb(129, 185, 231) 11.2%, rgb(106, 179, 210) 100.2% );
+  
+ 
+}
+
+
+.btn-log:hover {
+  background-image: linear-gradient( 109.6deg,  rgb(129, 185, 231) 11.2%, rgb(106, 179, 210) 100.2% );
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  .navbar-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .system-name {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-left .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .system-name {
+    font-size: 1.2rem;
+  }
+}
