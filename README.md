@@ -4,7 +4,7 @@ StreetToSweet is a centralized digital platform that streamlines street dog resc
 
 # 🚀 What We’ve Built
 
-✅ Centralized platform for street dog rescue, shelter care, and adoption
+✅ Centralized platform for street dog rescue, shelter care, and adoption 
 ✅ Emergency dog reporting with image & GPS location support
 ✅ Live rescue assignment and status tracking for rescue drivers
 ✅ Digital dog profiles with medical history & vaccination records
