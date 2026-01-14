@@ -26,36 +26,40 @@ StreetToSweet is a centralized digital platform that streamlines street dog resc
 
 
 # 🐕 Dog Shelter & Medical Care
-● Maintain detailed dog profiles including name, age, breed, condition, and shelter location
-● Assign a unique ID and color tag to each rescued dog
-● Record medical treatments, medications, and vaccination history
-● Certify dogs as healthy and ready for adoption
-● Allow volunteers and staff to monitor health status
-● Maintain complete digital medical records for each dog
+● Maintain detailed dog profiles including name, age, breed, condition, and shelter location  
+● Assign a unique ID and color tag to each rescued dog  
+● Record medical treatments, medications, and vaccination history  
+● Certify dogs as healthy and ready for adoption  
+● Allow volunteers and staff to monitor health status  
+● Maintain complete digital medical records for each dog  
+
 
 # 🏡 Adoption & Public Interaction
-● Allow public users to browse adoptable dogs and submit adoption requests
-● Enable admins to review, approve, or reject adoption requests
-● Generate and download official adoption certificates (PDF)
-● Accept donations (cash, food, medicine) through the platform
-● Enable users to register as volunteers and select tasks (feeding, walking, cleaning)
-● Support lost and found dog reporting and display notices on the public portal
+● Allow public users to browse adoptable dogs and submit adoption requests  
+● Enable admins to review, approve, or reject adoption requests  
+● Generate and download official adoption certificates (PDF)  
+● Accept donations (cash, food, medicine) through the platform  
+● Enable users to register as volunteers and select tasks (feeding, walking, cleaning)  
+● Support lost and found dog reporting and display notices on the public portal  
+
 
 
 # 📢 Awareness & Event Management
-● Allow administrators to create and publish events (adoption drives, vaccination campaigns)
-● Display events in a public calendar with automated reminders
-● Assign volunteers to event-related tasks
-● Publish blogs, rescue stories, and awareness content
+● Allow administrators to create and publish events (adoption drives, vaccination campaigns)  
+● Display events in a public calendar with automated reminders  
+● Assign volunteers to event-related tasks  
+● Publish blogs, rescue stories, and awareness content  
+
 
 # 🛠️ Tech Stack
 
-● Frontend: React.js, Modern responsive UI (HTML, CSS, JavaScript)
-● Backend: Node.js, Express.js (REST API)
-● Database: MongoDB (JSON-based data storage)
-● Other Tools:
-◦ Postman- Tool for testing and developing APIs
-◦ Google Maps API: Enables GPS-based dog rescue tracking and location mapping
+● Frontend: React.js, Modern responsive UI (HTML, CSS, JavaScript)  
+● Backend: Node.js, Express.js (REST API)  
+● Database: MongoDB (JSON-based data storage)  
+● Other Tools:  
+◦ Postman- Tool for testing and developing APIs  
+◦ Google Maps API: Enables GPS-based dog rescue tracking and location mapping  
+
 
 
 
