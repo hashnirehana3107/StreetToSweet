@@ -18,11 +18,12 @@ StreetToSweet is a centralized digital platform that streamlines street dog resc
 # 💡 Key Features
 
 # 🚑 Emergency Rescue Management
-● Enable the public to report stray or injured dogs with photos and GPS location.
-● Send automated alerts to administrators for rapid response.
-● Assign the nearest available rescue driver based on location and availability.
-● Allow rescue drivers to receive live rescue tasks and update status (in-route, rescued, not found).
-● Support documentation and initial registration of rescued dogs.
+● Enable the public to report stray or injured dogs with photos and GPS location  
+● Send automated alerts to administrators for rapid response  
+● Assign the nearest available rescue driver based on location and availability  
+● Allow rescue drivers to receive live rescue tasks and update status (in-route, rescued, not found)  
+● Support documentation and initial registration of rescued dogs  
+
 
 # 🐕 Dog Shelter & Medical Care
 ● Maintain detailed dog profiles including name, age, breed, condition, and shelter location
